@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Vérification - Carte de service ZIACA</title>
+    <title>Carte de service - ZIACA</title>
 
     <style>
         body {
@@ -25,14 +24,9 @@
             text-align: center;
         }
 
-        .logo {
-            width: 90px;
-            margin-bottom: 10px;
-        }
-
         h1 {
-            font-size: 22px;
-            margin: 5px 0;
+            font-size: 24px;
+            margin: 5px;
         }
 
         .titre {
@@ -47,13 +41,12 @@
             object-fit: cover;
             border: 3px solid #d4a017;
             border-radius: 8px;
-            margin-bottom: 15px;
         }
 
         .nom {
             font-size: 21px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin: 15px 0;
         }
 
         .infos {
@@ -77,14 +70,13 @@
         .erreur {
             color: #b00020;
             font-weight: bold;
-            text-align: center;
         }
     </style>
 </head>
 
 <body>
 
-<div class="carte" id="fiche">
+<div class="carte">
 
     <h1>ZIACA</h1>
 
@@ -100,34 +92,36 @@
 
 <script>
 
-const agents = {
-
-    "ADM_006_COPS": {
-        numero: "006",
-        nom: "Dieulla KALEPFULO BUHOLO",
-        sexe: "Féminin",
-        departement: "Administration",
-        fonction: "Opérateur de Saisie",
-        matricule: "ADM_006_COPS",
-        photo: "agents/ADM_006_COPS.jpeg"
-    }
-
-};
-
-
-/* Récupération du matricule envoyé par le QR */
 const parametres = new URLSearchParams(window.location.search);
-
 const matricule = parametres.get("id");
-
 const contenu = document.getElementById("contenu");
 
+fetch("agents.json")
+.then(response => {
 
-/* Vérification de l'agent */
+    if (!response.ok) {
+        throw new Error("Impossible de charger les agents");
+    }
 
-if (matricule && agents[matricule]) {
+    return response.json();
 
-    const agent = agents[matricule];
+})
+.then(agents => {
+
+    const agent = agents.find(
+        personne => personne.matricule === matricule
+    );
+
+    if (!agent) {
+
+        contenu.innerHTML = `
+            <div class="erreur">
+                Carte de service non trouvée.
+            </div>
+        `;
+
+        return;
+    }
 
     contenu.innerHTML = `
 
@@ -173,24 +167,18 @@ if (matricule && agents[matricule]) {
         <div class="valide">
             ✓ CARTE DE SERVICE ZIACA
         </div>
-
     `;
 
-} else {
+})
+.catch(error => {
 
     contenu.innerHTML = `
-
         <div class="erreur">
-            Carte de service non trouvée.
+            Impossible de charger les informations.
         </div>
-
-        <p>
-            Vérifiez le QR code ou le matricule.
-        </p>
-
     `;
 
-}
+});
 
 </script>
 
