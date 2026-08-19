@@ -1,10 +1,10 @@
 [
   {
-    "numero": "006",
+    "numero": "6",
     "nom": "Dieulla KALEPFULO BUHOLO",
-    "sexe": "FÃ©minin",
+    "sexe": "Féminin",
     "departement": "Administration",
-    "fonction": "OpÃ©rateur de Saisie",
+    "fonction": "Opérateur de Saisie",
     "matricule": "ADM_006_COPS",
     "photo": "agents/ADM_006_COPS.jpeg"
   }
