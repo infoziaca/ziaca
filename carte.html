@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vérification - Carte de service ZIACA</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        .carte {
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .logo {
+            width: 90px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 5px 0;
+        }
+
+        .titre {
+            color: #b8860b;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .photo {
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+            border: 3px solid #d4a017;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .nom {
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .infos {
+            text-align: left;
+            line-height: 1.9;
+        }
+
+        .infos strong {
+            color: #9a7200;
+        }
+
+        .valide {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e8f5e9;
+            color: #188038;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .erreur {
+            color: #b00020;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="carte" id="fiche">
+
+    <h1>ZIACA</h1>
+
+    <div class="titre">
+        CARTE DE SERVICE
+    </div>
+
+    <div id="contenu">
+        Chargement...
+    </div>
+
+</div>
+
+<script>
+
+const agents = {
+
+    "ADM_006_COPS": {
+        numero: "006",
+        nom: "Dieulla KALEPFULO BUHOLO",
+        sexe: "Féminin",
+        departement: "Administration",
+        fonction: "Opérateur de Saisie",
+        matricule: "ADM_006_COPS",
+        photo: "agents/ADM_006_COPS.jpg"
+    }
+
+};
+
+
+/* Récupération du matricule envoyé par le QR */
+const parametres = new URLSearchParams(window.location.search);
+
+const matricule = parametres.get("id");
+
+const contenu = document.getElementById("contenu");
+
+
+/* Vérification de l'agent */
+
+if (matricule && agents[matricule]) {
+
+    const agent = agents[matricule];
+
+    contenu.innerHTML = `
+
+        <img
+            class="photo"
+            src="${agent.photo}"
+            alt="Photo de ${agent.nom}"
+        >
+
+        <div class="nom">
+            ${agent.nom}
+        </div>
+
+        <div class="infos">
+
+            <div>
+                <strong>N° carte :</strong>
+                ${agent.numero}
+            </div>
+
+            <div>
+                <strong>Sexe :</strong>
+                ${agent.sexe}
+            </div>
+
+            <div>
+                <strong>Département :</strong>
+                ${agent.departement}
+            </div>
+
+            <div>
+                <strong>Fonction :</strong>
+                ${agent.fonction}
+            </div>
+
+            <div>
+                <strong>Matricule :</strong>
+                ${agent.matricule}
+            </div>
+
+        </div>
+
+        <div class="valide">
+            ✓ CARTE DE SERVICE ZIACA
+        </div>
+
+    `;
+
+} else {
+
+    contenu.innerHTML = `
+
+        <div class="erreur">
+            Carte de service non trouvée.
+        </div>
+
+        <p>
+            Vérifiez le QR code ou le matricule.
+        </p>
+
+    `;
+
+}
+
+</script>
+
+</body>
+</html>
