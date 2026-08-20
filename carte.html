@@ -96,7 +96,7 @@ const parametres = new URLSearchParams(window.location.search);
 const matricule = parametres.get("id");
 const contenu = document.getElementById("contenu");
 
-fetch("agents.json")
+fetch("agents.json?v=" + Date.now())
 .then(response => {
 
     if (!response.ok) {
@@ -115,10 +115,14 @@ fetch("agents.json")
     if (!agent) {
 
         contenu.innerHTML = `
-            <div class="erreur">
-                Carte de service non trouvée.
-            </div>
-        `;
+    <div class="erreur">
+        🔴 CARTE DE SERVICE INVALIDE
+        <br><br>
+        Cette carte n’est plus active.
+        <br>
+        Veuillez contacter l’administration de ZIACA.
+    </div>
+`;
 
         return;
     }
