@@ -1,5 +1,50 @@
 ﻿[
   {
+    "numero": "1",
+    "nom": "BULERE KASEREKA Josué",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Chef d'Etablissement",
+    "matricule": "ADM_001_CHET",
+    "photo": "agents/ADM_001_CHET.jpg"
+  },
+  {
+    "numero": "2",
+    "nom": "MATE MBAKO Benjamin",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Chef d'Etablissement Adjoint",
+    "matricule": "ADM_002_ACHET",
+    "photo": "agents/ADM_002_ACHET.jpg"
+  },
+  {
+    "numero": "3",
+    "nom": "KASEREKA OMBENI Paulin",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Secretaire",
+    "matricule": "ADM_003_CSEC",
+    "photo": "agents/ADM_003_CSEC.JPG"
+  },
+  {
+    "numero": "4",
+    "nom": "KAMBERE MALINYOTA Jeremy",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Intendant",
+    "matricule": "ADM_004_CINT",
+    "photo": "agents/ADM_004_CINT.jpg"
+  },
+  {
+    "numero": "5",
+    "nom": "MOISE ABIYINGOMA Jackson",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Chargé de Discipline",
+    "matricule": "ADM_005_CHADI",
+    "photo": ""
+  },
+  {
     "numero": "6",
     "nom": "Dieulla KALEPFULO BUHOLO",
     "sexe": "Féminin",
@@ -7,5 +52,329 @@
     "fonction": "Opérateur de Saisie",
     "matricule": "ADM_006_COPS",
     "photo": "agents/ADM_006_COPS.jpeg"
+  },
+  {
+    "numero": "7",
+    "nom": "KAVIRA MITWANA Jeannette",
+    "sexe": "Feminin",
+    "departement": "Administration",
+    "fonction": "Surveillante",
+    "matricule": "CSUR",
+    "photo": ""
+  },
+  {
+    "numero": "8",
+    "nom": "HAMULI BITALA Justin",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Surveillant",
+    "matricule": "CSUR",
+    "photo": ""
+  },
+  {
+    "numero": "9",
+    "nom": "Chance CHIRIMWAMI INNOCENT",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Chauffeur",
+    "matricule": "CCHA",
+    "photo": ""
+  },
+  {
+    "numero": "10",
+    "nom": "MUHINDO SYAUSWA Adelard",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Sentinelle",
+    "matricule": "CSEN",
+    "photo": ""
+  },
+  {
+    "numero": "11",
+    "nom": "TULINABO RAGI Oscar",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Sentinelle",
+    "matricule": "CSEN",
+    "photo": ""
+  },
+  {
+    "numero": "12",
+    "nom": "NABINTU KABUGU Christine",
+    "sexe": "Feminin",
+    "departement": "Administration",
+    "fonction": "Infirmière",
+    "matricule": "CINFI",
+    "photo": ""
+  },
+  {
+    "numero": "13",
+    "nom": "KAHAMBU BITAVO Aline",
+    "sexe": "Feminin",
+    "departement": "Administration",
+    "fonction": "Infirmière",
+    "matricule": "CINFI",
+    "photo": ""
+  },
+  {
+    "numero": "14",
+    "nom": "KAMBALE KATEMBO Jacque",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Conseiller d'Orientation",
+    "matricule": "CCOP",
+    "photo": ""
+  },
+  {
+    "numero": "15",
+    "nom": "Eulrich HABAMUNGU ENGULU",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_001_AGROENT",
+    "photo": ""
+  },
+  {
+    "numero": "16",
+    "nom": "KASEREKA KALERU Amos",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_002_AGROENT",
+    "photo": "agents/SP_002_AGROENT.jpg"
+  },
+  {
+    "numero": "17",
+    "nom": "KABUO KASAY Nadine",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_003_AGRI",
+    "photo": ""
+  },
+  {
+    "numero": "18",
+    "nom": "NIYONZIMA BAREBERAHO Fidele",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_004_AGRI",
+    "photo": ""
+  },
+  {
+    "numero": "20",
+    "nom": "IMANI MINANE Patient",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_005_AGROECO",
+    "photo": ""
+  },
+  {
+    "numero": "21",
+    "nom": "NEEMA MAHATANE Noella",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_006_AGROECO",
+    "photo": ""
+  },
+  {
+    "numero": "24",
+    "nom": "NURU RWADIGI Frederic",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_007_AGROECO",
+    "photo": ""
+  },
+  {
+    "numero": "19",
+    "nom": "SHEMERERWA BANURA Nadine",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_008_AGROBUS",
+    "photo": ""
+  },
+  {
+    "numero": "22",
+    "nom": "RAYMOND SAMBA Mbuli",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_009_AGROBUS",
+    "photo": ""
+  },
+  {
+    "numero": "23",
+    "nom": "KASAY MARIANNA WASEKALINGA",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_010_AGROBUS",
+    "photo": ""
+  },
+  {
+    "numero": "25",
+    "nom": "KASINDI AMULI Bienvenu",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_011_AGROFOR",
+    "photo": ""
+  },
+  {
+    "numero": "26",
+    "nom": "AJUWAMUNGU BAHATI David",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_012_AGROFOR",
+    "photo": ""
+  },
+  {
+    "numero": "27",
+    "nom": "KAVIRA MWENGE Christelle",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_013_TRANSFO",
+    "photo": ""
+  },
+  {
+    "numero": "28",
+    "nom": "KASEREKA SYAIKAMBA Samuel",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_014_TRANSFO",
+    "photo": ""
+  },
+  {
+    "numero": "29",
+    "nom": "EZI KAMBALE Theophile",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_015_TRANSFO",
+    "photo": ""
+  },
+  {
+    "numero": "30",
+    "nom": "KATUNGU KAMBALE Jones",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_016_COOP",
+    "photo": ""
+  },
+  {
+    "numero": "31",
+    "nom": "KAVUGHO MBAKULIRAHI Guilaine",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_017_COOP",
+    "photo": ""
+  },
+  {
+    "numero": "32",
+    "nom": "MUHINDO MAHANDA Grace",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_018_COOP",
+    "photo": ""
+  },
+  {
+    "numero": "33",
+    "nom": "NKEKENI MUSUNGA Moise",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_019_JARD",
+    "photo": ""
+  },
+  {
+    "numero": "34",
+    "nom": "KAMBALE SYAUSWA Claude",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_020_API",
+    "photo": ""
+  },
+  {
+    "numero": "35",
+    "nom": "MELINA KALEPFULO",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_021_API",
+    "photo": ""
+  },
+  {
+    "numero": "36",
+    "nom": "MUHINDO KALEPFULO Paulin",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_022_API",
+    "photo": ""
+  },
+  {
+    "numero": "37",
+    "nom": "Enock MUGUSHA BARE",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_023_PECHE",
+    "photo": ""
+  },
+  {
+    "numero": "38",
+    "nom": "KAKULE MACHOMAKALI Michael",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_024_PECHE",
+    "photo": ""
+  },
+  {
+    "numero": "39",
+    "nom": "SENGEMOYA KAYAMBI Aimable",
+    "sexe": "Masculin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_025_PECHE",
+    "photo": ""
+  },
+  {
+    "numero": "40",
+    "nom": "ASHUZA BAKUDESIRE Rosselo",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_026_ART",
+    "photo": ""
+  },
+  {
+    "numero": "41",
+    "nom": "MUHAWENIMANA SIFA ESPERENCE",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_027_ART",
+    "photo": "agents/SP_027_ART.jpg"
+  },
+  {
+    "numero": "42",
+    "nom": "KAVIRA NZALAMINGI Divine",
+    "sexe": "Feminin",
+    "departement": "Service Pedagogique",
+    "fonction": "Formateur",
+    "matricule": "SP_028_ART",
+    "photo": ""
   }
 ]
