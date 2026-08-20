@@ -27,6 +27,15 @@
     "photo": "agents/ADM_003_CSEC.JPG"
   },
   {
+    "numero": "4",
+    "nom": "KAMBERE MALINYOTA Jeremy",
+    "sexe": "Masculin",
+    "departement": "Administration",
+    "fonction": "Intandant",
+    "matricule": "ADM_004_CINT",
+    "photo": "agents/ADM_004_CINT.jpg"
+  },
+  {
     "numero": "5",
     "nom": "MOISE ABIYINGOMA Jackson",
     "sexe": "Masculin",
