@@ -265,8 +265,8 @@ else {
 
             <img
                 class="photo"
-                src="${apprenant.photo}"
-                alt="Photo de ${apprenant.nom}"
+                src="${new URL(apprenant.photo, window.location.href).href}"
+                 alt="Photo de ${apprenant.nom}"
             >
 
             <div class="nom">
