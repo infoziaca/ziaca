@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jeton apprenant - ZIACA</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        .carte {
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin: 5px;
+        }
+
+        .titre {
+            color: #b8860b;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .photo {
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+            border: 3px solid #d4a017;
+            border-radius: 8px;
+        }
+
+        .nom {
+            font-size: 21px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .infos {
+            text-align: left;
+            line-height: 1.9;
+        }
+
+        .infos strong {
+            color: #9a7200;
+        }
+
+        .valide {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e8f5e9;
+            color: #188038;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .expire {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .erreur {
+            color: #b00020;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="carte">
+
+    <h1>ZIACA</h1>
+
+    <div class="titre">
+        JETON APPRENANT
+    </div>
+
+    <div id="contenu">
+        Chargement...
+    </div>
+
+</div>
+
+
+<script>
+
+const parametres =
+    new URLSearchParams(window.location.search);
+
+const id =
+    parametres.get("id");
+
+const contenu =
+    document.getElementById("contenu");
+
+
+/* =====================================================
+   VERIFICATION DE L'ID
+   ===================================================== */
+
+if (!id) {
+
+    contenu.innerHTML = `
+        <div class="erreur">
+            Aucun identifiant de jeton fourni.
+        </div>
+    `;
+
+}
+
+
+/* =====================================================
+   CHARGEMENT DE APPRENANTS.JSON
+   ===================================================== */
+
+else {
+
+    fetch("apprenants.json")
+
+    .then(response => {
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Impossible de charger les apprenants"
+            );
+
+        }
+
+        return response.json();
+
+    })
+
+
+    .then(apprenants => {
+
+        /* =============================================
+           RECHERCHE DE L'APPRENANT
+           ============================================= */
+
+        const apprenant =
+            apprenants.find(
+                personne =>
+                    personne.id === id
+            );
+
+
+        /* =============================================
+           ID NON TROUVÉ
+           ============================================= */
+
+        if (!apprenant) {
+
+            contenu.innerHTML = `
+
+                <div class="erreur">
+
+                    CE JETON N'EST PLUS ACTIF.
+
+                    <br><br>
+
+                    Veuillez contacter
+                    l'administration de ZIACA.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        /* =============================================
+           VERIFICATION DE LA DATE
+           ============================================= */
+
+        const aujourdHui =
+            new Date();
+
+        aujourdHui.setHours(
+            0, 0, 0, 0
+        );
+
+
+        let dateFin = null;
+
+
+        if (apprenant.dateFin) {
+
+            dateFin =
+                new Date(
+                    apprenant.dateFin
+                );
+
+            dateFin.setHours(
+                0, 0, 0, 0
+            );
+
+        }
+
+
+        /* =============================================
+           JETON EXPIRE
+           ============================================= */
+
+        if (
+            dateFin &&
+            aujourdHui > dateFin
+        ) {
+
+            contenu.innerHTML = `
+
+                <div class="erreur">
+
+                    JETON EXPIRÉ.
+
+                    <br><br>
+
+                    La période de validité
+                    de ce jeton est terminée.
+
+                    <br><br>
+
+                    Veuillez contacter
+                    l'administration de ZIACA.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        /* =============================================
+           AFFICHAGE DU JETON
+           ============================================= */
+
+        contenu.innerHTML = `
+
+            <img
+                class="photo"
+                src="${apprenant.photo}"
+                alt="Photo de ${apprenant.nom}"
+            >
+
+            <div class="nom">
+                ${apprenant.nom}
+            </div>
+
+            <div class="infos">
+
+                <div>
+                    <strong>Sexe :</strong>
+                    ${apprenant.sexe}
+                </div>
+
+                <div>
+                    <strong>Filière :</strong>
+                    ${apprenant.filiere}
+                </div>
+
+                <div>
+                    <strong>Promotion :</strong>
+                    ${apprenant.promotion}
+                </div>
+
+                <div>
+                    <strong>ID N° :</strong>
+                    ${apprenant.id}
+                </div>
+
+                <div>
+                    <strong>Validité :</strong>
+                    ${apprenant.dateDebut}
+                    au
+                    ${apprenant.dateFin}
+                </div>
+
+            </div>
+
+
+            <div class="valide">
+
+                ✓ JETON ZIACA VALIDE
+
+            </div>
+
+        `;
+
+    })
+
+
+    .catch(error => {
+
+        contenu.innerHTML = `
+
+            <div class="erreur">
+
+                Impossible de charger
+                les informations du jeton.
+
+                <br><br>
+
+                Veuillez réessayer plus tard.
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
