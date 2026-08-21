@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Jeton apprenant - ZIACA</title>
 
@@ -27,8 +31,8 @@
         }
 
         h1 {
-            font-size: 26px;
-            margin: 5px;
+            font-size: 28px;
+            margin: 5px 0;
         }
 
         .titre {
@@ -44,6 +48,8 @@
             object-fit: cover;
             border: 3px solid #d4a017;
             border-radius: 8px;
+            display: block;
+            margin: 0 auto 15px auto;
         }
 
         .nom {
@@ -63,7 +69,7 @@
 
         .valide {
             margin-top: 20px;
-            padding: 10px;
+            padding: 12px;
             background: #e8f5e9;
             color: #188038;
             border-radius: 8px;
@@ -72,7 +78,7 @@
 
         .expire {
             margin-top: 20px;
-            padding: 10px;
+            padding: 12px;
             background: #fff3cd;
             color: #856404;
             border-radius: 8px;
@@ -85,10 +91,18 @@
             line-height: 1.6;
         }
 
+        .chargement {
+            color: #555;
+            font-weight: bold;
+        }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <div class="carte">
 
@@ -99,7 +113,11 @@
     </div>
 
     <div id="contenu">
-        Chargement...
+
+        <div class="chargement">
+            Chargement...
+        </div>
+
     </div>
 
 </div>
@@ -107,11 +125,20 @@
 
 <script>
 
+
+/* =====================================================
+   PARAMETRE DU QR CODE
+   ===================================================== */
+
 const parametres =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+        window.location.search
+    );
+
 
 const id =
     parametres.get("id");
+
 
 const contenu =
     document.getElementById("contenu");
@@ -124,9 +151,13 @@ const contenu =
 if (!id) {
 
     contenu.innerHTML = `
+
         <div class="erreur">
+
             Aucun identifiant de jeton fourni.
+
         </div>
+
     `;
 
 }
@@ -138,14 +169,17 @@ if (!id) {
 
 else {
 
-    fetch("apprenants.json")
+    fetch(
+        "apprenants.json?cache=" +
+        new Date().getTime()
+    )
 
-    .then(response => {
+    .then(function(response) {
 
         if (!response.ok) {
 
             throw new Error(
-                "Impossible de charger les apprenants"
+                "Impossible de charger apprenants.json"
             );
 
         }
@@ -155,21 +189,24 @@ else {
     })
 
 
-    .then(apprenants => {
+    .then(function(apprenants) {
+
 
         /* =============================================
            RECHERCHE DE L'APPRENANT
            ============================================= */
 
         const apprenant =
-            apprenants.find(
-                personne =>
-                    personne.id === id
-            );
+            apprenants.find(function(personne) {
+
+                return String(personne.id).trim() ===
+                       String(id).trim();
+
+            });
 
 
         /* =============================================
-           ID NON TROUVÉ
+           APPRENANT NON TROUVE
            ============================================= */
 
         if (!apprenant) {
@@ -201,8 +238,12 @@ else {
         const aujourdHui =
             new Date();
 
+
         aujourdHui.setHours(
-            0, 0, 0, 0
+            0,
+            0,
+            0,
+            0
         );
 
 
@@ -213,12 +254,9 @@ else {
 
             dateFin =
                 new Date(
-                    apprenant.dateFin
+                    apprenant.dateFin +
+                    "T00:00:00"
                 );
-
-            dateFin.setHours(
-                0, 0, 0, 0
-            );
 
         }
 
@@ -234,9 +272,9 @@ else {
 
             contenu.innerHTML = `
 
-                <div class="erreur">
+                <div class="expire">
 
-                    JETON EXPIRÉ.
+                    JETON EXPIRÉ
 
                     <br><br>
 
@@ -258,6 +296,53 @@ else {
 
 
         /* =============================================
+           CONSTRUCTION DE L'URL DE LA PHOTO
+           ============================================= */
+
+        let urlPhoto = "";
+
+
+        if (apprenant.photo) {
+
+            let cheminPhoto =
+                String(
+                    apprenant.photo
+                ).trim();
+
+
+            /*
+             * Si le JSON contient :
+             *
+             * apprenants/photo.jpg
+             *
+             * on construit :
+             *
+             * /ziaca/apprenants/photo.jpg
+             */
+
+
+            if (
+                cheminPhoto.startsWith("/")
+            ) {
+
+                urlPhoto =
+                    "https://infoziaca.github.io" +
+                    cheminPhoto;
+
+            }
+
+            else {
+
+                urlPhoto =
+                    "https://infoziaca.github.io/ziaca/" +
+                    cheminPhoto;
+
+            }
+
+        }
+
+
+        /* =============================================
            AFFICHAGE DU JETON
            ============================================= */
 
@@ -265,41 +350,49 @@ else {
 
             <img
                 class="photo"
-                src="${new URL(apprenant.photo, window.location.href).href}"
-                 alt="Photo de ${apprenant.nom}"
+                id="photoApprenant"
+                src="${urlPhoto}"
+                alt="Photo de ${apprenant.nom}"
             >
 
             <div class="nom">
+
                 ${apprenant.nom}
+
             </div>
+
 
             <div class="infos">
 
                 <div>
                     <strong>Sexe :</strong>
-                    ${apprenant.sexe}
+                    ${apprenant.sexe || ""}
                 </div>
+
 
                 <div>
                     <strong>Filière :</strong>
-                    ${apprenant.filiere}
+                    ${apprenant.filiere || ""}
                 </div>
+
 
                 <div>
                     <strong>Promotion :</strong>
-                    ${apprenant.promotion}
+                    ${apprenant.promotion || ""}
                 </div>
+
 
                 <div>
                     <strong>ID N° :</strong>
-                    ${apprenant.id}
+                    ${apprenant.id || ""}
                 </div>
+
 
                 <div>
                     <strong>Validité :</strong>
-                    ${apprenant.dateDebut}
+                    ${apprenant.dateDebut || ""}
                     au
-                    ${apprenant.dateFin}
+                    ${apprenant.dateFin || ""}
                 </div>
 
             </div>
@@ -313,10 +406,62 @@ else {
 
         `;
 
+
+        /* =============================================
+           VERIFICATION DU CHARGEMENT DE LA PHOTO
+           ============================================= */
+
+        const image =
+            document.getElementById(
+                "photoApprenant"
+            );
+
+
+        image.onerror = function() {
+
+            /*
+             * Si la photo n'est pas trouvée,
+             * on affiche un message clair.
+             */
+
+            image.style.display = "none";
+
+
+            const messagePhoto =
+                document.createElement("div");
+
+
+            messagePhoto.className =
+                "erreur";
+
+
+            messagePhoto.style.marginBottom =
+                "15px";
+
+
+            messagePhoto.innerHTML =
+
+                "Photo indisponible.";
+
+
+            contenu.insertBefore(
+                messagePhoto,
+                document.querySelector(".nom")
+            );
+
+        };
+
     })
 
 
-    .catch(error => {
+    /* =================================================
+       ERREUR DE CHARGEMENT
+       ================================================= */
+
+    .catch(function(error) {
+
+        console.error(error);
+
 
         contenu.innerHTML = `
 
@@ -339,5 +484,7 @@ else {
 
 </script>
 
+
 </body>
+
 </html>
