@@ -213,7 +213,7 @@
     "departement": "Service Pedagogique",
     "fonction": "Formateur",
     "matricule": "SP_010_AGROBUS",
-    "photo": ""
+    "photo": "agents/SP_010_AGROBUS.jpg"
   },
   {
     "numero": "25",
@@ -231,7 +231,7 @@
     "departement": "Service Pedagogique",
     "fonction": "Formateur",
     "matricule": "SP_012_AGROFOR",
-    "photo": ""
+    "photo": "agents/SP_012_AGROFOR.jpg"
   },
   {
     "numero": "27",
@@ -321,7 +321,7 @@
     "departement": "Service Pedagogique",
     "fonction": "Formateur",
     "matricule": "SP_022_API",
-    "photo": ""
+    "photo": "agents/SP_022_API.jpg"
   },
   {
     "numero": "37",
@@ -339,7 +339,7 @@
     "departement": "Service Pedagogique",
     "fonction": "Formateur",
     "matricule": "SP_024_PECHE",
-    "photo": ""
+    "photo": "agents/SP_024_PECHE.jpg"
   },
   {
     "numero": "39",
@@ -375,6 +375,6 @@
     "departement": "Service Pedagogique",
     "fonction": "Formateur",
     "matricule": "SP_028_ART",
-    "photo": ""
+    "photo": "agents/SP_028_ART.jpg"
   }
 ]
